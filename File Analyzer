@@ -1,0 +1,20 @@
+def analyze_file(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            lines = file.readlines()
+            line_count = len(lines)
+            word_count = sum(len(line.split()) for line in lines)
+            character_count = sum(len(line) for line in lines)
+        return line_count, word_count, character_count
+    except FileNotFoundError:
+        print("File not found.")
+        return None
+
+file_path = input("Enter the path to the file: ")
+result = analyze_file(file_path)
+if result:
+    line_count, word_count, character_count = result
+    print("Analysis result for file:", file_path)
+    print("Number of lines:", line_count)
+    print("Number of words:", word_count)
+    print("Number of characters:", character_count)
